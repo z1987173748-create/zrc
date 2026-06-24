@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>分享入口</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="share">
+    <div class="app-shell share-shell">
+      <header class="hero hero-share card">
+        <div>
+          <p class="eyebrow">SHARE ENTRY</p>
+          <h1>二维码和链接分享页</h1>
+          <p class="hero-text">把这个网页目录部署到任意静态托管后，顾客和商家都能通过独立链接或二维码访问。</p>
+        </div>
+        <div class="toolbar-links">
+          <a class="ghost-button" href="./index.html">顾客端</a>
+          <a class="ghost-button" href="./merchant.html">商家端</a>
+        </div>
+      </header>
+
+      <section class="card share-config">
+        <div class="panel-head">
+          <div>
+            <h2>分享地址</h2>
+            <p>默认会根据当前页面自动生成。如果你要部署到新域名，可以手动改这里。</p>
+          </div>
+        </div>
+        <input id="base-url-input" class="search-input" type="url" placeholder="例如：https://your-domain.com/order/" />
+        <div class="panel-actions">
+          <button id="apply-base-url" class="primary-button" type="button">更新二维码</button>
+        </div>
+      </section>
+
+      <section class="share-grid">
+        <article class="card share-card">
+          <h2>顾客端</h2>
+          <p>点单、加购物车、提交订单。</p>
+          <img id="customer-qr" class="qr-image" alt="顾客端二维码" />
+          <a id="customer-link" class="share-link" target="_blank" rel="noopener noreferrer"></a>
+          <button class="ghost-button copy-button" type="button" data-target="customer-link">复制顾客端链接</button>
+        </article>
+
+        <article class="card share-card">
+          <h2>商家端</h2>
+          <p>改价、上下架、处理订单。</p>
+          <img id="merchant-qr" class="qr-image" alt="商家端二维码" />
+          <a id="merchant-link" class="share-link" target="_blank" rel="noopener noreferrer"></a>
+          <button class="ghost-button copy-button" type="button" data-target="merchant-link">复制商家端链接</button>
+        </article>
+      </section>
+    </div>
+
+    <script src="./scripts/share.js"></script>
+  </body>
+</html>

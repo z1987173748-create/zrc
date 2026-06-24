@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>商家管理页</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="merchant">
+    <div class="app-shell">
+      <header class="hero hero-merchant card">
+        <div>
+          <p class="eyebrow">MERCHANT CONSOLE</p>
+          <h1>商家管理页</h1>
+          <p class="hero-text">改价、上下架、查看订单和热销菜，一套静态网页就能演示完整经营链路。</p>
+        </div>
+        <div class="toolbar-links">
+          <a class="ghost-button" href="./index.html">顾客端</a>
+          <a class="ghost-button" href="./share.html">分享入口</a>
+        </div>
+      </header>
+
+      <section class="metric-grid">
+        <article class="metric-card card">
+          <span>待接单</span>
+          <strong id="metric-pending">0</strong>
+        </article>
+        <article class="metric-card card">
+          <span>处理中</span>
+          <strong id="metric-processing">0</strong>
+        </article>
+        <article class="metric-card card">
+          <span>已上架</span>
+          <strong id="metric-enabled">0</strong>
+        </article>
+        <article class="metric-card card">
+          <span>累计营收</span>
+          <strong id="metric-revenue">¥0</strong>
+        </article>
+      </section>
+
+      <section class="card merchant-section">
+        <div class="panel-head">
+          <div>
+            <h2>订单看板</h2>
+            <p>点击按钮推进订单状态：待接单 → 制作中 → 待取餐 → 已完成。</p>
+          </div>
+        </div>
+        <div id="merchant-order-list" class="order-list empty-copy">还没有顾客订单。</div>
+      </section>
+
+      <section class="card merchant-section">
+        <div class="panel-head">
+          <div>
+            <h2>菜单管理</h2>
+            <p>支持改价、改库存、上下架和替换图片链接。</p>
+          </div>
+          <input id="merchant-search-input" class="search-input compact" type="search" placeholder="搜索菜名" />
+        </div>
+        <div id="merchant-dish-list" class="merchant-dish-list"></div>
+      </section>
+    </div>
+
+    <script src="./data/menu.js"></script>
+    <script src="./scripts/store.js"></script>
+    <script src="./scripts/merchant.js"></script>
+  </body>
+</html>
