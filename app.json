@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/landing/index",
+    "pages/home/index",
+    "pages/detail/index",
+    "pages/cart/index",
+    "pages/orders/index",
+    "pages/merchant/index"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#f4efe6"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

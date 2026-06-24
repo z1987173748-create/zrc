@@ -1,0 +1,15 @@
+# Logs and local runtime files
+*.log
+
+# Node / Python caches
+node_modules/
+__pycache__/
+*.pyc
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+
+# Optional local env files
+.env
+.env.*

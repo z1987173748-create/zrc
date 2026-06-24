@@ -1,0 +1,73 @@
+page {
+  min-height: 100%;
+  background: linear-gradient(180deg, #f8f3eb 0%, #efe4d3 100%);
+  color: #2f2419;
+  font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+view,
+text,
+button,
+input,
+image,
+scroll-view {
+  box-sizing: border-box;
+}
+
+.shell {
+  min-height: 100vh;
+  padding: 32rpx 24rpx 48rpx;
+}
+
+.topbar {
+  padding-top: 84rpx;
+}
+
+.glass-card {
+  background: rgba(255, 251, 246, 0.92);
+  border: 1rpx solid rgba(138, 103, 67, 0.12);
+  box-shadow: 0 18rpx 50rpx rgba(88, 55, 21, 0.08);
+  backdrop-filter: blur(18rpx);
+  border-radius: 32rpx;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.section-desc {
+  margin-top: 8rpx;
+  color: #80664d;
+  font-size: 24rpx;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rpx 20rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #d66a2f 0%, #b64a1b 100%);
+  color: #fff9f2;
+}
+
+.btn-secondary {
+  background: #f4e7d4;
+  color: #8a5732;
+}
+
+.price {
+  color: #b64a1b;
+  font-weight: 700;
+}
+
+.empty-state {
+  padding: 56rpx 32rpx;
+  text-align: center;
+  color: #8e7359;
+}

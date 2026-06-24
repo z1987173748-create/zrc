@@ -1,0 +1,11 @@
+{
+  "name": "zrc-smart-order-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "顾客端与商家端点单网页，支持 GitHub Pages 发布",
+  "scripts": {
+    "export:web-data": "node scripts/export_web_data.js",
+    "build:pages": "node scripts/build_github_pages.js",
+    "prepare:deploy": "node scripts/export_web_data.js && node scripts/build_github_pages.js"
+  }
+}
