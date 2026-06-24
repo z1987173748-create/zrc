@@ -1,0 +1,38 @@
+<view wx:if="{{dish}}" class="shell detail-shell">
+  <view class="topbar"></view>
+  <view class="detail-card glass-card">
+    <image class="detail-image" src="{{dish.image}}" mode="aspectFill" />
+    <view class="detail-body">
+      <text class="detail-name">{{dish.name}}</text>
+      <text class="detail-category">{{dish.category}}</text>
+      <text class="detail-desc">{{dish.description}}</text>
+      <view class="tag-row">
+        <text wx:for="{{dish.tags}}" wx:key="*this" class="pill tag">{{item}}</text>
+      </view>
+
+      <view class="detail-stats">
+        <view>
+          <text class="detail-stat-label">月售</text>
+          <text class="detail-stat-value">{{dish.sales}}</text>
+        </view>
+        <view>
+          <text class="detail-stat-label">库存</text>
+          <text class="detail-stat-value">{{dish.stock}}</text>
+        </view>
+        <view>
+          <text class="detail-stat-label">价格</text>
+          <text class="detail-stat-value price">¥{{dish.price}}</text>
+        </view>
+      </view>
+
+      <view class="purchase-bar">
+        <view class="stepper">
+          <text class="stepper-btn" bindtap="decrease">-</text>
+          <text class="stepper-value">{{quantity}}</text>
+          <text class="stepper-btn" bindtap="increase">+</text>
+        </view>
+        <view class="buy-btn {{buttonText !== '加入购物车' ? 'disabled' : ''}}" bindtap="addToCart">{{buttonText}}</view>
+      </view>
+    </view>
+  </view>
+</view>

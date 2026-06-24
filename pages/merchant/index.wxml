@@ -1,0 +1,156 @@
+<view class="shell merchant-shell">
+  <view class="topbar merchant-hero">
+    <view class="merchant-banner">
+      <view>
+        <text class="merchant-title">商家工作台</text>
+        <text class="merchant-desc">{{cloudLabel}} · 支持菜单改价、上下架、换图和订单处理。</text>
+      </view>
+      <view class="back-btn" bindtap="goCustomer">回顾客端</view>
+    </view>
+  </view>
+
+  <view class="tab-row">
+    <view class="tab-chip {{activeTab === 'board' ? 'active' : ''}}" data-tab="board" bindtap="switchTab">经营看板</view>
+    <view class="tab-chip {{activeTab === 'menu' ? 'active' : ''}}" data-tab="menu" bindtap="switchTab">菜单管理</view>
+  </view>
+
+  <view wx:if="{{activeTab === 'board'}}" class="merchant-pane">
+    <view class="metric-grid">
+      <view class="metric-card">
+        <text class="metric-label">待接单</text>
+        <text class="metric-value">{{metrics.pending}}</text>
+      </view>
+      <view class="metric-card">
+        <text class="metric-label">处理中</text>
+        <text class="metric-value">{{metrics.processing}}</text>
+      </view>
+      <view class="metric-card">
+        <text class="metric-label">累计营收</text>
+        <text class="metric-value">¥{{metrics.revenue}}</text>
+      </view>
+      <view class="metric-card">
+        <text class="metric-label">客单价</text>
+        <text class="metric-value">¥{{metrics.avgTicket}}</text>
+      </view>
+    </view>
+
+    <view class="glass-card merchant-section">
+      <text class="section-title">热销菜品</text>
+      <view wx:if="{{hasHotDishes}}" class="hot-list">
+        <view wx:for="{{hotDishes}}" wx:key="name" class="hot-item">
+          <text>{{index + 1}}. {{item.name}}</text>
+          <text>{{item.count}} 份</text>
+        </view>
+      </view>
+      <view wx:else class="empty-inline">还没有成交订单，先去顾客端提几单试试。</view>
+    </view>
+
+    <view class="glass-card merchant-section">
+      <text class="section-title">订单看板</text>
+      <view wx:if="{{hasOrders}}" class="merchant-orders">
+        <view wx:for="{{orders}}" wx:key="id" class="merchant-order-card">
+          <view class="merchant-order-top">
+            <view>
+              <text class="order-id">{{item.id}}</text>
+              <text class="order-time">{{item.createdAtText}} · {{item.tableCode}}</text>
+            </view>
+            <text class="order-status dark">{{item.status}}</text>
+          </view>
+          <text class="merchant-items">{{item.totalCount}} 份，金额 ¥{{item.totalAmount}}</text>
+          <text class="merchant-items">菜品：{{item.summaryDish}}</text>
+          <text class="merchant-items">备注：{{item.noteText}}</text>
+          <view wx:if="{{item.canAdvance}}" class="merchant-btn" data-id="{{item.id}}" bindtap="advanceStatus">
+            {{item.actionText}}
+          </view>
+        </view>
+      </view>
+      <view wx:else class="empty-inline">还没有顾客订单，商家端会在顾客下单后自动同步。</view>
+    </view>
+  </view>
+
+  <view wx:if="{{activeTab === 'menu'}}" class="merchant-pane">
+    <view class="glass-card merchant-section">
+      <view class="menu-summary">
+        <view class="summary-card">
+          <text class="summary-label">上架中</text>
+          <text class="summary-value">{{menuStats.enabled}}</text>
+        </view>
+        <view class="summary-card">
+          <text class="summary-label">已下架</text>
+          <text class="summary-value">{{menuStats.disabled}}</text>
+        </view>
+      </view>
+
+      <view class="search-box menu-search">
+        <input placeholder="搜索菜名或说明" bindinput="onMenuKeywordInput" value="{{menuKeyword}}" />
+      </view>
+
+      <view class="filter-row">
+        <view
+          wx:for="{{menuFilters}}"
+          wx:key="value"
+          class="filter-chip {{item.active ? 'active' : ''}}"
+          data-value="{{item.value}}"
+          bindtap="switchMenuFilter"
+        >
+          {{item.label}}
+        </view>
+      </view>
+    </view>
+
+    <view class="menu-admin-list">
+      <view wx:for="{{filteredMenu}}" wx:key="id" class="glass-card menu-admin-card">
+        <image class="menu-admin-image" src="{{item.image}}" mode="aspectFill" />
+        <view class="menu-admin-body">
+          <view class="menu-admin-head">
+            <view>
+              <text class="menu-admin-name">{{item.name}}</text>
+              <text class="menu-admin-meta">{{item.category}} · {{item.priceText}} · 库存 {{item.stock}}</text>
+            </view>
+            <text class="menu-status {{item.enabled ? 'enabled' : 'disabled'}}">{{item.statusText}}</text>
+          </view>
+          <text class="menu-admin-desc">{{item.description}}</text>
+          <view class="menu-admin-actions">
+            <switch checked="{{item.enabled}}" color="#1d5b4c" data-id="{{item.id}}" bindchange="toggleDishStatus" />
+            <view class="menu-edit-btn" data-id="{{item.id}}" bindtap="openEditor">编辑</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{editorVisible}}" class="editor-mask" bindtap="closeEditor">
+    <view class="editor-sheet glass-card" catchtap="noop">
+      <text class="section-title">{{editorForm.name}}</text>
+      <text class="section-desc">可修改价格、库存、上架状态和菜品图片。</text>
+
+      <image class="editor-image" src="{{editorForm.image}}" mode="aspectFill" />
+      <view class="editor-image-btn" bindtap="chooseImage">更换图片</view>
+
+      <view class="editor-field">
+        <text class="editor-label">价格</text>
+        <input class="editor-input" type="digit" data-field="price" bindinput="onEditorFieldInput" value="{{editorForm.price}}" />
+      </view>
+
+      <view class="editor-field">
+        <text class="editor-label">库存</text>
+        <input class="editor-input" type="number" data-field="stock" bindinput="onEditorFieldInput" value="{{editorForm.stock}}" />
+      </view>
+
+      <view class="editor-field">
+        <text class="editor-label">菜品说明</text>
+        <textarea class="editor-textarea" data-field="description" bindinput="onEditorFieldInput" value="{{editorForm.description}}" maxlength="160" />
+      </view>
+
+      <view class="editor-switch">
+        <text class="editor-label">是否上架</text>
+        <switch checked="{{editorForm.enabled}}" color="#1d5b4c" bindchange="onEditorEnabledChange" />
+      </view>
+
+      <view class="editor-actions">
+        <view class="editor-cancel" bindtap="closeEditor">取消</view>
+        <view class="editor-save" bindtap="saveDishEdit">保存</view>
+      </view>
+    </view>
+  </view>
+</view>

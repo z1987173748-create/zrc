@@ -1,0 +1,90 @@
+.cart-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.cart-head,
+.note-card,
+.settle-bar,
+.cart-card {
+  padding: 24rpx;
+}
+
+.cart-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.cart-card {
+  display: flex;
+  gap: 18rpx;
+}
+
+.cart-image {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 24rpx;
+  flex-shrink: 0;
+}
+
+.cart-body {
+  flex: 1;
+}
+
+.cart-top,
+.cart-actions,
+.settle-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-name {
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.cart-status {
+  display: block;
+  margin-top: 14rpx;
+  color: #8c7157;
+  font-size: 22rpx;
+}
+
+.cart-actions {
+  margin-top: 22rpx;
+}
+
+.cart-subtotal {
+  color: #886a4f;
+  font-size: 24rpx;
+}
+
+.note-label {
+  display: block;
+  margin-bottom: 18rpx;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.note-input {
+  width: 100%;
+  min-height: 180rpx;
+  font-size: 26rpx;
+}
+
+.settle-count {
+  display: block;
+  color: #81654c;
+  font-size: 22rpx;
+}
+
+.settle-total {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #b64a1b;
+}

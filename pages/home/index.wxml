@@ -1,0 +1,72 @@
+<view class="shell home-shell">
+  <view class="topbar hero-card glass-card">
+    <view class="hero-head">
+      <view>
+        <text class="home-title">今日菜单</text>
+        <text class="home-subtitle">{{cloudLabel}} · 当前上架 {{availableCount}} 道菜</text>
+      </view>
+      <view class="switch-btn" bindtap="goMerchant">切到商家端</view>
+    </view>
+
+    <view class="search-box">
+      <input placeholder="搜索菜名、口味或菜品说明" bindinput="onKeywordInput" value="{{keyword}}" />
+    </view>
+
+    <view class="hero-actions">
+      <view class="mini-card">
+        <text class="mini-label">今日在售</text>
+        <text class="mini-value">{{availableCount}}</text>
+      </view>
+      <view class="mini-card" bindtap="goOrders">
+        <text class="mini-label">我的订单</text>
+        <text class="mini-value">查看</text>
+      </view>
+      <view class="mini-card accent" bindtap="goCart">
+        <text class="mini-label">购物车</text>
+        <text class="mini-value">{{cartCount}} 份</text>
+      </view>
+    </view>
+  </view>
+
+  <scroll-view class="category-strip" scroll-x enable-flex show-scrollbar="{{false}}">
+    <view
+      wx:for="{{categories}}"
+      wx:key="name"
+      class="category-chip {{item.isActive ? 'active' : ''}}"
+      data-category="{{item.name}}"
+      bindtap="switchCategory"
+    >
+      {{item.name}}
+    </view>
+  </scroll-view>
+
+  <view class="dish-list">
+    <view wx:for="{{filteredMenu}}" wx:key="id" class="dish-card glass-card">
+      <image class="dish-image" src="{{item.image}}" mode="aspectFill" bindtap="openDetail" data-id="{{item.id}}" />
+      <view class="dish-body">
+        <view class="dish-meta" bindtap="openDetail" data-id="{{item.id}}">
+          <view class="dish-header">
+            <text class="dish-name">{{item.name}}</text>
+            <text class="price">{{item.priceText}}</text>
+          </view>
+          <text class="dish-category">{{item.category}}</text>
+          <text class="dish-desc">{{item.description}}</text>
+          <view class="tag-row">
+            <text wx:for="{{item.tags}}" wx:key="*this" class="pill tag">{{item}}</text>
+          </view>
+        </view>
+
+        <view class="dish-footer">
+          <text class="dish-sales">{{item.salesText}} · {{item.stockText}}</text>
+          <view class="add-btn {{item.isSoldOut ? 'disabled' : ''}}" data-id="{{item.id}}" bindtap="addItem">
+            {{item.isSoldOut ? '已售罄' : '+ 加入'}}
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{!hasFilteredMenu}}" class="glass-card empty-state">
+      没有找到匹配的菜品，试试更短的关键词。
+    </view>
+  </view>
+</view>

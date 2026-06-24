@@ -1,0 +1,95 @@
+.detail-card {
+  overflow: hidden;
+}
+
+.detail-image {
+  width: 100%;
+  height: 420rpx;
+}
+
+.detail-body {
+  padding: 28rpx;
+}
+
+.detail-name {
+  display: block;
+  font-size: 42rpx;
+  font-weight: 700;
+}
+
+.detail-category {
+  display: block;
+  margin-top: 10rpx;
+  color: #9a7550;
+  font-size: 24rpx;
+}
+
+.detail-desc {
+  display: block;
+  margin-top: 18rpx;
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: #6d5641;
+}
+
+.detail-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18rpx;
+  margin-top: 26rpx;
+  padding: 24rpx;
+  border-radius: 24rpx;
+  background: #f8f0e3;
+}
+
+.detail-stat-label {
+  display: block;
+  color: #8b7054;
+  font-size: 22rpx;
+}
+
+.detail-stat-value {
+  display: block;
+  margin-top: 10rpx;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.purchase-bar {
+  margin-top: 28rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20rpx;
+}
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+}
+
+.stepper-btn,
+.stepper-value {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 18rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5e7d3;
+  font-size: 30rpx;
+}
+
+.buy-btn {
+  padding: 18rpx 36rpx;
+  border-radius: 999rpx;
+  background: #b64a1b;
+  color: #fff9f2;
+  font-size: 28rpx;
+}
+
+.buy-btn.disabled {
+  background: #d6cabd;
+  color: #7d6b5a;
+}

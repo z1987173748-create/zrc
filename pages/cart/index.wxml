@@ -1,0 +1,50 @@
+<view class="shell cart-shell">
+  <view class="topbar cart-head glass-card">
+    <text class="section-title">购物车</text>
+    <text class="section-desc">支持备注少辣少油、去葱香菜、先上热菜等需求。</text>
+  </view>
+
+  <view wx:if="{{hasCart}}" class="cart-list">
+    <view wx:for="{{cart}}" wx:key="id" class="cart-card glass-card">
+      <image class="cart-image" src="{{item.image}}" mode="aspectFill" />
+      <view class="cart-body">
+        <view class="cart-top">
+          <text class="cart-name">{{item.name}}</text>
+          <text class="price">¥{{item.price}}</text>
+        </view>
+        <text class="cart-status">{{item.enabled ? '可下单' : '已下架'}} · 剩余 {{item.stock}}</text>
+        <view class="cart-actions">
+          <view class="stepper">
+            <text class="stepper-btn" data-id="{{item.id}}" data-delta="{{-1}}" bindtap="updateQuantity">-</text>
+            <text class="stepper-value">{{item.quantity}}</text>
+            <text class="stepper-btn" data-id="{{item.id}}" data-delta="{{1}}" bindtap="updateQuantity">+</text>
+          </view>
+          <text class="cart-subtotal">小计 ¥{{item.subtotal}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="glass-card note-card">
+      <text class="note-label">订单备注</text>
+      <textarea
+        class="note-input"
+        placeholder="例如：不要香菜、少辣、打包、先上汤类"
+        maxlength="120"
+        value="{{note}}"
+        bindinput="onNoteInput"
+      />
+    </view>
+
+    <view class="settle-bar glass-card">
+      <view>
+        <text class="settle-count">共 {{totalCount}} 份</text>
+        <text class="settle-total">¥{{totalAmount}}</text>
+      </view>
+      <view class="buy-btn" bindtap="submitOrder">提交订单</view>
+    </view>
+  </view>
+
+  <view wx:else class="glass-card empty-state">
+    还没有加入菜品，回到菜单页挑点好吃的吧。
+  </view>
+</view>

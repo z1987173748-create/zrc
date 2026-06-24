@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>点单页面</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="customer">
+    <div class="app-shell">
+      <header class="hero hero-customer card">
+        <div>
+          <p class="eyebrow">SMART ORDER WEB</p>
+          <h1>顾客点单页</h1>
+          <p class="hero-text">不用发小程序，直接打开链接或扫二维码就能浏览菜单、加购物车和提交订单。</p>
+        </div>
+        <a class="ghost-button" href="./share.html">查看分享入口</a>
+      </header>
+
+      <section class="toolbar card">
+        <div class="toolbar-head">
+          <div>
+            <h2>今日菜单</h2>
+            <p id="customer-mode-label">正在读取数据…</p>
+          </div>
+          <div class="toolbar-links">
+            <a class="link-button" href="./merchant.html">商家端</a>
+            <a class="link-button strong" href="#cart-panel">购物车 <span id="cart-count">0</span></a>
+          </div>
+        </div>
+        <div class="toolbar-body">
+          <input id="search-input" class="search-input" type="search" placeholder="搜索菜名、口味、说明" />
+          <div id="category-list" class="chip-row"></div>
+        </div>
+      </section>
+
+      <main id="dish-list" class="dish-grid"></main>
+
+      <section id="cart-panel" class="card cart-panel">
+        <div class="panel-head">
+          <div>
+            <h2>购物车</h2>
+            <p>支持备注少辣、不要香菜、打包等需求。</p>
+          </div>
+          <div class="price-large" id="cart-total">¥0</div>
+        </div>
+        <div id="cart-list" class="cart-list empty-copy">还没有加入菜品。</div>
+        <textarea id="order-note" class="note-box" placeholder="例如：少辣、不要香菜、打包"></textarea>
+        <div class="panel-actions">
+          <button id="clear-cart-button" class="ghost-button" type="button">清空购物车</button>
+          <button id="submit-order-button" class="primary-button" type="button">提交订单</button>
+        </div>
+      </section>
+
+      <section class="card order-panel">
+        <div class="panel-head">
+          <div>
+            <h2>我的订单</h2>
+            <p>提交后会保存在浏览器本地，商家页能同步看到。</p>
+          </div>
+        </div>
+        <div id="customer-order-list" class="order-list empty-copy">还没有订单。</div>
+      </section>
+    </div>
+
+    <script src="./data/menu.js"></script>
+    <script src="./scripts/store.js"></script>
+    <script src="./scripts/customer.js"></script>
+  </body>
+</html>

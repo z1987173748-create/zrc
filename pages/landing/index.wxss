@@ -1,0 +1,89 @@
+.landing-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 28rpx;
+  background:
+    radial-gradient(circle at top right, rgba(212, 113, 55, 0.22), transparent 28%),
+    radial-gradient(circle at left center, rgba(233, 201, 147, 0.35), transparent 26%);
+}
+
+.landing-hero {
+  padding-bottom: 24rpx;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.hero-eyebrow {
+  color: #9d5a36;
+  font-size: 22rpx;
+  letter-spacing: 6rpx;
+}
+
+.hero-title {
+  font-size: 62rpx;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.hero-desc {
+  color: #72563f;
+  font-size: 28rpx;
+  line-height: 1.7;
+}
+
+.hero-panel {
+  padding: 30rpx;
+}
+
+.panel-header {
+  margin-bottom: 26rpx;
+}
+
+.role-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 22rpx;
+}
+
+.role-card {
+  padding: 28rpx;
+  border-radius: 28rpx;
+  color: #fffdf8;
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.role-card.customer {
+  background: linear-gradient(145deg, #d67238, #a44325);
+}
+
+.role-card.merchant {
+  background: linear-gradient(145deg, #234840, #14352f);
+}
+
+.role-name {
+  font-size: 38rpx;
+  font-weight: 700;
+}
+
+.role-subtitle {
+  font-size: 26rpx;
+  line-height: 1.6;
+  opacity: 0.92;
+}
+
+.role-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.merchant-pill {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff6e9;
+}

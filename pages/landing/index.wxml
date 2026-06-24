@@ -1,0 +1,38 @@
+<view class="shell landing-shell">
+  <view class="topbar landing-hero">
+    <view class="hero-copy">
+      <text class="hero-eyebrow">SMART ORDER MINI APP</text>
+      <text class="hero-title">餐厅点单小程序</text>
+      <text class="hero-desc">顾客端强调点单体验，商家端负责改价、上下架、换图和接单管理。这一版已经预留云开发入口，适合继续接真实后端。</text>
+    </view>
+  </view>
+
+  <view class="glass-card hero-panel">
+    <view class="panel-header">
+      <text class="section-title">当前状态</text>
+      <text class="section-desc">默认身份：{{roleLabel}} · {{cloudLabel}}</text>
+    </view>
+
+    <view class="role-grid">
+      <view class="role-card customer" bindtap="enterCustomer">
+        <text class="role-name">顾客端</text>
+        <text class="role-subtitle">搜索菜品、看图看说明、加入购物车、带备注下单。</text>
+        <view class="role-points">
+          <text class="pill btn-secondary">图片菜谱</text>
+          <text class="pill btn-secondary">状态同步</text>
+          <text class="pill btn-secondary">订单记录</text>
+        </view>
+      </view>
+
+      <view class="role-card merchant" bindtap="enterMerchant">
+        <text class="role-name">商家端</text>
+        <text class="role-subtitle">经营看板和菜单管理分开，支持改价、上下架、换图、推进订单状态。</text>
+        <view class="role-points">
+          <text class="pill merchant-pill">改价</text>
+          <text class="pill merchant-pill">上下架</text>
+          <text class="pill merchant-pill">云存储图片</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

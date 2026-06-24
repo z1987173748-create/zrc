@@ -1,0 +1,44 @@
+.orders-head {
+  padding: 24rpx;
+}
+
+.order-list {
+  margin-top: 24rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.order-card {
+  padding: 24rpx;
+}
+
+.order-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 18rpx;
+}
+
+.order-id {
+  display: block;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.order-time,
+.order-summary,
+.order-note,
+.order-items text {
+  display: block;
+  margin-top: 10rpx;
+  color: #775d47;
+  font-size: 24rpx;
+}
+
+.order-status {
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  background: #f4e2cb;
+  color: #945425;
+  font-size: 22rpx;
+}

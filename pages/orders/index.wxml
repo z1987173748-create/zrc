@@ -1,0 +1,27 @@
+<view class="shell">
+  <view class="topbar glass-card orders-head">
+    <text class="section-title">我的订单</text>
+    <text class="section-desc">{{cloudLabel}} · 可查看历史订单和当前处理状态。</text>
+  </view>
+
+  <view wx:if="{{hasOrders}}" class="order-list">
+    <view wx:for="{{orders}}" wx:key="id" class="glass-card order-card">
+      <view class="order-top">
+        <view>
+          <text class="order-id">{{item.id}}</text>
+          <text class="order-time">{{item.createdAtText}} · {{item.tableCode}}</text>
+        </view>
+        <text class="order-status">{{item.status}}</text>
+      </view>
+      <text class="order-summary">{{item.totalCount}} 份 · ¥{{item.totalAmount}}</text>
+      <text class="order-note">备注：{{item.noteText}}</text>
+      <view class="order-items">
+        <text wx:for="{{item.items}}" wx:key="id">{{item.name}} x{{item.quantity}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:else class="glass-card empty-state">
+    暂时还没有订单，去点一份招牌菜试试。
+  </view>
+</view>
